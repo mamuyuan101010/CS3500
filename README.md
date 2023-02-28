@@ -1,1 +1,1 @@
-# CS3500
+# This is CS3500 assignment git hub repository
