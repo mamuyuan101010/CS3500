@@ -1,5 +1,7 @@
 package assigment4.model.pixel;
 
+import java.util.Objects;
+
 /**
  * Represents a simple pixel of rgb values.
  */
@@ -19,7 +21,10 @@ public class SimplePixel implements Pixel {
    * @param b blue channel.
    */
   public SimplePixel(int r, int g, int b, int a) {
-    this.r = r;
+    if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255 || a < 0 || a > 255) {
+      throw new IllegalStateException("No value of a pixel can be less than 0 or bigger than 255");
+    }
+            this.r = r;
     this.g = g;
     this.b = b;
     this.a = a;
@@ -54,7 +59,22 @@ public class SimplePixel implements Pixel {
   public String toString() {
     return String.valueOf(this.getR())
             + " " + String.valueOf(this.getG())
-            + " " + String.valueOf(this.getB());
+            + " " + String.valueOf(this.getB())
+            + " " + String.valueOf(this.getA());
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof SimplePixel)) return false;
+    SimplePixel that = (SimplePixel) o;
+    return getR() == that.getR() && getG() == that.getG() && getB() == that.getB() &&
+            getA() == that.getA();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getR(), getG(), getB(), getA());
   }
 }
 
