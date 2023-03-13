@@ -1,4 +1,4 @@
-package assigment4.model.builders;
+package assigment4.model.builder;
 
 import assigment4.model.image.ImageModel;
 import assigment4.model.image.SimpleImageModel;

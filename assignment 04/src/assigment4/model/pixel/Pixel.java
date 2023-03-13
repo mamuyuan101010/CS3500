@@ -44,4 +44,11 @@ public interface Pixel extends Copyable<Pixel> {
    * @return the text view of the pixel
    */
   public String toString();
+
+  /**
+   * Converts the pixel from a 4-component representation to a 3-component representation.
+   *
+   * @return a new Pixel object representing the converted pixel.
+   */
+  public Pixel convertTo3Component();
 }

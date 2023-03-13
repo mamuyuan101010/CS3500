@@ -46,61 +46,6 @@ public interface ImageModel extends Copyable<ImageModel> {
    */
   public void set(int row, int col, Pixel p) throws IllegalArgumentException;
 
-  /**
-   * Creates a new project with the given name and given dimensions. Every project has a white
-   * background layer by default.
-   * @param height the height of the canvas
-   * @param width the width of the canvas
-   */
-  public void newProject(int height, int width);
-
-  /**
-   * Loads a project into the program.
-   * @param fileName the name of the path
-   * @param imageModel the program that the users will be working on
-   */
-  public void loadProject(String fileName, ImageModel imageModel);
-
-  /**
-   * Saves the project as one file.
-   * @param imageModel the project the users are working on
-   * @param fileName the name of the path
-   */
-  public void saveProject(ImageModel imageModel, String fileName);
-
-  /**
-   * Adds a new layer with the given name to the top of the whole project.
-   * @param layer the layer that the users want to add
-   */
-  public void addLayer(Layer layer);
-
-  /**
-   * Places an image on the layer such that the top left corner of the image is at (x-pos, y-pos).
-   * @param layer the layer that the users want
-   * @param imageModel the image that the users want to add on
-   * @param row the row position of the image on the layer of the image beneath
-   * @param col the column position of the image on the layer of the image beneath
-   */
-  public void addImageToLayer(Layer layer, ImageModel imageModel, int row, int col);
-
-  /**
-   * Sets the filter of the given layer with filter-option.
-   * @param layer the layer existed
-   * @param filter the filter option
-   */
-  public void setFilter(Layer layer, Filter filter);
-
-  /**
-   * Saves the result of applying all filters on the image.
-   * @param imageModel the image or final project that the users want to save
-   * @param fileName the name of the path
-   */
-  public void saveImage(ImageModel imageModel, String fileName);
-
-  /**
-   * Quits the project and loses all unsaved work.
-   */
-  public void quit();
 
 }
 

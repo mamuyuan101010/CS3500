@@ -1,5 +1,7 @@
 package assigment4.model.image;
 
+import assigment4.model.pixel.Pixel;
+
 /**
  * Packages shared image functionality together.
  */

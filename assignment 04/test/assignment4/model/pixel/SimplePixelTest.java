@@ -5,7 +5,8 @@ import org.junit.Test;
 import assigment4.model.pixel.Pixel;
 import assigment4.model.pixel.SimplePixel;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * This is a JUnit test for pixel.
@@ -30,6 +31,14 @@ public class SimplePixelTest {
       Pixel pixel5 = new SimplePixel(0, 0, 256, 0);
       Pixel pixel6 = new SimplePixel(0, 0, 0, -1);
       Pixel pixel7 = new SimplePixel(0, 0, 0, 256);
+      Pixel pixel8 = new SimplePixel(-1, 0, 0);
+      Pixel pixel9 = new SimplePixel(256, 0, 0);
+      Pixel pixel10 = new SimplePixel(0, -1, 0);
+      Pixel pixel11 = new SimplePixel(0, 256, 0);
+      Pixel pixel12 = new SimplePixel(0, 0, -1);
+      Pixel pixel13 = new SimplePixel(0, 0, 256);
+
+
     } catch (IllegalStateException e) {
       assertEquals("No value of a pixel can be less than 0 or bigger than 255",
               e.getMessage());
@@ -56,5 +65,10 @@ public class SimplePixelTest {
   @Test
   public void testToString() {
     assertEquals("12 13 14 15", pixel.toString());
+  }
+
+  @Test
+  public void testConvert() {
+    assertEquals(new SimplePixel(0, 0, 0), pixel.convertTo3Component());
   }
 }
