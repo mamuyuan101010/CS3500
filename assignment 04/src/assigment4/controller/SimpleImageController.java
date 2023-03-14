@@ -3,6 +3,15 @@ package assigment4.controller;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import assigment4.controller.commands.AddImageToLayerCommand;
+import assigment4.controller.commands.AddLayerCommand;
+import assigment4.controller.commands.ImageCommand;
+import assigment4.controller.commands.LoadProjectCommand;
+import assigment4.controller.commands.NewProjectCommand;
+import assigment4.controller.commands.QuitCommand;
+import assigment4.controller.commands.SaveImageCommand;
+import assigment4.controller.commands.SaveProjectCommand;
+import assigment4.controller.commands.SetFilterCommand;
 import assigment4.view.SimpleImageView;
 
 
@@ -23,16 +32,15 @@ public class SimpleImageController extends AbstractImageController {
       throw new IllegalArgumentException("SimpleCont out is null");
     }
 
-    this.commands.put("help", (Scanner s) -> new HelpCommand(commands, this.out));
-    this.commands.put("load-ppm", (Scanner s) -> new LoadPPMCommand(s));
-    this.commands.put("save-ppm", (Scanner s) -> new SavePPMCommand(s));
-    this.commands.put("red-component", (Scanner s) -> new RedCompCommand(s));
-    this.commands.put("flip-horizontal", (Scanner s) -> new HFlipCommand(s));
-    this.commands.put("flip-vertical", (Scanner s) -> new VFlipCommand(s));
-    this.commands.put("remove", (Scanner s) -> new RemoveCommand(s));
-    this.commands.put("list", (Scanner s) -> new ListCommand(this.out));
-    this.commands.put("rename", (Scanner s) -> new RenameCommand(s));
-    this.commands.put("change-intensity", (Scanner s) -> new ChangeIntensityCommand(s));
+    this.commands.put("add-image-to-layer-command", (Scanner s) -> new AddImageToLayerCommand(s));
+    this.commands.put("add-layer-command", (Scanner s) -> new AddLayerCommand(s));
+    this.commands.put("load-project-command", (Scanner s) -> new LoadProjectCommand(s));
+    this.commands.put("new-project-command", (Scanner s) -> new NewProjectCommand(s));
+    this.commands.put("quit-command", (Scanner s) -> new QuitCommand(s));
+    this.commands.put("save-image-command", (Scanner s) -> new SaveImageCommand(s));
+    this.commands.put("save-project-command", (Scanner s) -> new SaveProjectCommand(s));
+    this.commands.put("set-filter-command", (Scanner s) -> new SetFilterCommand(s));
+
   }
 
   @Override
@@ -81,19 +89,19 @@ public class SimpleImageController extends AbstractImageController {
   private void runCommand(Scanner sc, String command) {
     Function<Scanner, ImageCommand> cmd = this.commands.getOrDefault(command, null);
     if (cmd == null) {
-      this.out.renderAsState("Command '" + command + "' not found.\n");
+      this.out.renderMessage("Command '" + command + "' not found.\n");
     } else {
       ImageCommand c = null;
       try {
         c = cmd.apply(sc);
       } catch (IllegalArgumentException e) {
-        this.out.renderAsState("Argument Error: " + e.getMessage() + "\n");
+        this.out.renderMessage("Argument Error: " + e.getMessage() + "\n");
       }
       if (c != null) {
         try {
           c.apply(this.images);
         } catch (IllegalStateException e) {
-          this.out.renderAsState("Error: " + e.getMessage() + "\n");
+          this.out.renderMessage("Error: " + e.getMessage() + "\n");
         }
       }
     }

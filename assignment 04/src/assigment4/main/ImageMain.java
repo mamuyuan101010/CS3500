@@ -3,6 +3,7 @@ package assigment4.main;
 import java.io.InputStreamReader;
 
 import assigment4.controller.ImageController;
+import assigment4.controller.SimpleImageController;
 
 /**
  * Represents the entrypoint of the program.
@@ -16,6 +17,6 @@ public class ImageMain {
   public static void main(String []args) {
     ImageController controller = new SimpleImageController(System.out,
             new InputStreamReader(System.in));
-    controller.run();
+    controller.go();
   }
 }
