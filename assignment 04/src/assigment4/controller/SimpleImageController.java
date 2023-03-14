@@ -3,6 +3,7 @@ package assigment4.controller;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import assigment4.controller.commands.ImageCommand;
 import assigment4.view.SimpleImageView;
 
 
@@ -81,19 +82,19 @@ public class SimpleImageController extends AbstractImageController {
   private void runCommand(Scanner sc, String command) {
     Function<Scanner, ImageCommand> cmd = this.commands.getOrDefault(command, null);
     if (cmd == null) {
-      this.out.renderAsState("Command '" + command + "' not found.\n");
+      this.out.renderMessage("Command '" + command + "' not found.\n");
     } else {
       ImageCommand c = null;
       try {
         c = cmd.apply(sc);
       } catch (IllegalArgumentException e) {
-        this.out.renderAsState("Argument Error: " + e.getMessage() + "\n");
+        this.out.renderMessage("Argument Error: " + e.getMessage() + "\n");
       }
       if (c != null) {
         try {
           c.apply(this.images);
         } catch (IllegalStateException e) {
-          this.out.renderAsState("Error: " + e.getMessage() + "\n");
+          this.out.renderMessage("Error: " + e.getMessage() + "\n");
         }
       }
     }
