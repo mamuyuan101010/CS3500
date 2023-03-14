@@ -13,6 +13,7 @@ public class SimplePixel implements Pixel {
 
   private int a;
 
+
   /**
    * Constructs a simple pixel given rgb values.
    *
@@ -27,6 +28,7 @@ public class SimplePixel implements Pixel {
     this.r = r;
     this.g = g;
     this.b = b;
+
   }
 
   /**
@@ -76,6 +78,7 @@ public class SimplePixel implements Pixel {
     int r = (int) Math.round(this.r * this.a / 255.0);
     int g = (int) Math.round(this.g * this.a / 255.0);
     int b = (int) Math.round(this.b * this.a / 255.0);
+
     return new SimplePixel(r, g, b);
   }
 
