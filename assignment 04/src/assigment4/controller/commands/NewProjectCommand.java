@@ -18,7 +18,7 @@ public class NewProjectCommand extends AbstractCommand{
   public void apply(Map<String, ImageModel> images) throws IllegalStateException {
     int height = this.getInt();
     int width = this.getInt();
-    Pixel pixel = new SimplePixel(255, 255, 255, 255);
+    Pixel pixel = new SimplePixel(255, 255, 255);
     ImageModel imageModel = new SimpleImageModel(255, height, width,
             new Pixel[height][width]);
     for (int i = 0; i < height; i++) {

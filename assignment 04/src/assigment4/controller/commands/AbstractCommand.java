@@ -12,8 +12,6 @@ public abstract class AbstractCommand implements ImageCommand {
 
   /**
    * Constructs an Abstract command.
-   *
-   * @param sc A scanner to get arguments for the command.
    */
   protected AbstractCommand(Scanner sc) {
     if (sc == null) {
