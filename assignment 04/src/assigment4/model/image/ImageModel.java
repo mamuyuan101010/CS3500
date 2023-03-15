@@ -45,7 +45,5 @@ public interface ImageModel extends Copyable<ImageModel> {
    * @param p pixel to set as new entry.
    */
   public void set(int row, int col, Pixel p) throws IllegalArgumentException;
-
-
 }
 

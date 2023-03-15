@@ -15,6 +15,8 @@ public class SimpleImageModelBuilder {
 
   private Pixel[][] image;
 
+  private String name;
+
   /**
    * Gets a new instance of the builder.
    *
@@ -69,6 +71,17 @@ public class SimpleImageModelBuilder {
   }
 
   /**
+   * Sets the name of the model to build.
+   *
+   * @param name name to set.
+   * @return returns a builder with the image set.
+   */
+  public SimpleImageModelBuilder setName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
    * Builds the model.
    *
    * @return returns the model.
@@ -81,6 +94,6 @@ public class SimpleImageModelBuilder {
     if (this.image == null) {
       this.image = new Pixel[this.height][this.width];
     }
-    return new SimpleImageModel(this.image, this.maxValue, this.height, this.width);
+    return new SimpleImageModel(this.maxValue, this.height, this.width, this.image);
   }
 }

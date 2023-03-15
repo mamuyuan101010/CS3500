@@ -3,7 +3,15 @@ package assigment4.controller;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import assigment4.controller.commands.AddImageToLayerCommand;
+import assigment4.controller.commands.AddLayerCommand;
 import assigment4.controller.commands.ImageCommand;
+import assigment4.controller.commands.LoadProjectCommand;
+import assigment4.controller.commands.NewProjectCommand;
+import assigment4.controller.commands.QuitCommand;
+import assigment4.controller.commands.SaveImageCommand;
+import assigment4.controller.commands.SaveProjectCommand;
+import assigment4.controller.commands.SetFilterCommand;
 import assigment4.view.SimpleImageView;
 
 
@@ -24,16 +32,14 @@ public class SimpleImageController extends AbstractImageController {
       throw new IllegalArgumentException("SimpleCont out is null");
     }
 
-    this.commands.put("help", (Scanner s) -> new HelpCommand(commands, this.out));
-    this.commands.put("load-ppm", (Scanner s) -> new LoadPPMCommand(s));
-    this.commands.put("save-ppm", (Scanner s) -> new SavePPMCommand(s));
-    this.commands.put("red-component", (Scanner s) -> new RedCompCommand(s));
-    this.commands.put("flip-horizontal", (Scanner s) -> new HFlipCommand(s));
-    this.commands.put("flip-vertical", (Scanner s) -> new VFlipCommand(s));
-    this.commands.put("remove", (Scanner s) -> new RemoveCommand(s));
-    this.commands.put("list", (Scanner s) -> new ListCommand(this.out));
-    this.commands.put("rename", (Scanner s) -> new RenameCommand(s));
-    this.commands.put("change-intensity", (Scanner s) -> new ChangeIntensityCommand(s));
+    this.commands.put("new-project", (Scanner s) -> new NewProjectCommand(s));
+    /*this.commands.put("load-project", (Scanner s) -> new LoadProjectCommand(s));
+    this.commands.put("save-project", (Scanner s) -> new SaveProjectCommand(s));
+    this.commands.put("add-layer", (Scanner s) -> new AddLayerCommand(s));
+    this.commands.put("add-image-to-layer", (Scanner s) -> new AddImageToLayerCommand(s));
+    this.commands.put("set-filter", (Scanner s) -> new SetFilterCommand(s));
+    this.commands.put("save-image", (Scanner s) -> new SaveImageCommand(this.out));
+    this.commands.put("quit", (Scanner s) -> new QuitCommand(s));*/
   }
 
   @Override
