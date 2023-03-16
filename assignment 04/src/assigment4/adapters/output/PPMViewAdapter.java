@@ -37,7 +37,7 @@ public class PPMViewAdapter implements ViewAdapter {
       throw new IllegalStateException("PPM could not open file for writing");
     }
 
-    out.write("C1\n");
+    out.write("P3\n");
     out.write(String.valueOf(this.model.getWidth())
             + " "
             + String.valueOf(this.model.getHeight())
@@ -49,7 +49,6 @@ public class PPMViewAdapter implements ViewAdapter {
         out.write(String.valueOf(p.getR()) + "\n");
         out.write(String.valueOf(p.getG()) + "\n");
         out.write(String.valueOf(p.getB()) + "\n");
-        out.write(String.valueOf(p.getA()) + "\n");
       }
     }
     out.close();

@@ -1,10 +1,8 @@
 package assigment4.controller;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
-
 import assigment4.controller.commands.ImageCommand;
 import assigment4.model.image.ImageModel;
 import assigment4.view.ImageView;
