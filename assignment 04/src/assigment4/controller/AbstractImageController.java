@@ -1,10 +1,12 @@
 package assigment4.controller;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 import assigment4.controller.commands.ImageCommand;
-import assigment4.model.image.ImageModel;
+import assigment4.model.layer.Layer;
 import assigment4.view.ImageView;
 
 /**
@@ -14,7 +16,7 @@ public abstract class AbstractImageController implements ImageController {
 
   protected Map<String, Function<Scanner, ImageCommand>> commands;
 
-  protected Map<String, ImageModel> images;
+  protected List<Layer> layers;
 
   protected final Readable in;
   protected final ImageView out;
@@ -29,7 +31,7 @@ public abstract class AbstractImageController implements ImageController {
       throw new IllegalArgumentException("No parameters of controllers can be null.");
     }
     this.commands = new HashMap<>();
-    this.images = new HashMap<>();
+    this.layers = new ArrayList<Layer>();
     this.in = in;
     this.out = out;
   }

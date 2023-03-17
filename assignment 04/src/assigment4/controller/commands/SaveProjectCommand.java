@@ -1,8 +1,8 @@
 package assigment4.controller.commands;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Scanner;
-import assigment4.model.image.ImageModel;
+import assigment4.model.layer.Layer;
 
 public class SaveProjectCommand extends AbstractCommand{
   /**
@@ -15,7 +15,7 @@ public class SaveProjectCommand extends AbstractCommand{
   }
 
   @Override
-  public void apply(Map<String, ImageModel> images) throws IllegalStateException {
+  public void apply(List<Layer> layers) throws IllegalStateException {
 
   }
 }

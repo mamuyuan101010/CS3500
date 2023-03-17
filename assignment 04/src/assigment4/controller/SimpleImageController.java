@@ -8,7 +8,6 @@ import assigment4.controller.commands.AddLayerCommand;
 import assigment4.controller.commands.ImageCommand;
 import assigment4.controller.commands.LoadProjectCommand;
 import assigment4.controller.commands.NewProjectCommand;
-import assigment4.controller.commands.QuitCommand;
 import assigment4.controller.commands.SaveImageCommand;
 import assigment4.controller.commands.SaveProjectCommand;
 import assigment4.controller.commands.SetFilterCommand;
@@ -98,7 +97,7 @@ public class SimpleImageController extends AbstractImageController {
       }
       if (c != null) {
         try {
-          c.apply(this.images);
+          c.apply(this.layers);
         } catch (IllegalStateException e) {
           this.out.renderMessage("Error: " + e.getMessage() + "\n");
         }

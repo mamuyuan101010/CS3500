@@ -1,8 +1,7 @@
 package assigment4.controller.commands;
 
-import java.util.Map;
-
-import assigment4.model.image.ImageModel;
+import java.util.List;
+import assigment4.model.layer.Layer;
 
 /**
  * Represents a command that works on an image model.
@@ -11,9 +10,9 @@ public interface ImageCommand {
 
   /**
    * Applies command given a list of images.
-   * @param images list of models for the command to work on.
+   * @param layers list of layer for the command to work on.
    */
-  public void apply(Map<String, ImageModel> images) throws IllegalStateException;
+  public void apply(Project ) throws IllegalStateException;
 
   /**
    * Prints helpful information about a command.
