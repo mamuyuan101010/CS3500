@@ -1,6 +1,8 @@
 package assigment4.controller.commands;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import assigment4.model.collagerProject.CollagerProject;
@@ -38,9 +40,9 @@ public class NewProjectCommand extends AbstractCommand{
     }
     ImageWithCoordModel imageModelCoord =
             new SimpleImageWithCoordModel(new Coordinate(0,0), imageModel);
-    HashMap<String, ImageWithCoordModel> background = new HashMap();
-    background.put("background", imageModelCoord);
-    Layer outPutLayer = new SimpleLayer(Filter.Normal, background, "background");
+    List<ImageWithCoordModel> background = new ArrayList<ImageWithCoordModel>();
+    background.add(imageModelCoord);
+    Layer outPutLayer = new SimpleLayer(Filter.Normal, background, "background", height, width);
     c.getLayers().add(outPutLayer);
     c.setHeight(height);
     c.setWidth(width);

@@ -15,7 +15,7 @@ public class SimpleImageWithCoordModel implements ImageWithCoordModel {
   /**
    * return the coordinate value
    */
-  private Coordinate getCoord() {
+  public Coordinate getCoord() {
     Coordinate output = new Coordinate(0,0);
     output = this.coord;
     return output;
@@ -24,7 +24,7 @@ public class SimpleImageWithCoordModel implements ImageWithCoordModel {
   /**
    * return the image value
    */
-  private ImageModel getImage() {
+  public ImageModel getImage() {
     ImageModel output = new SimpleImageModel();
     output = this.image;
     return output;
