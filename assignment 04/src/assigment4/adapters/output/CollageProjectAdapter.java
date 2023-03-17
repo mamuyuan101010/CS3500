@@ -4,18 +4,20 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import assigment4.model.collagerProject.CollagerProject;
 import assigment4.model.layer.Layer;
 
 public class CollageProjectAdapter implements ViewAdapter{
 
-  private List<Layer> layers;
+  private CollagerProject c;
 
-  public CollageProjectAdapter(List<Layer> layers) {
-    if (layers == null) {
+  public CollageProjectAdapter(CollagerProject c) {
+    if (c == null) {
       throw new IllegalArgumentException("PPMView constructed with a null argument.");
     }
     else {
-      this.layers = layers;
+      this.c = c;
     }
   }
 
@@ -31,6 +33,10 @@ public class CollageProjectAdapter implements ViewAdapter{
       throw new IllegalStateException("Collaging project could not open file for writing");
     }
     out.write("C1\n");
-    out.write("");
+    out.write("" + this.c.getWidth() + " " + this.c.getHeight() + "\n");
+    out.write("255\n");
+    for (Layer la: this.c.getLayers()) {
+      out.write(la.getLayerName() + " " + la.getFilter().toString());
+    }
   }
 }

@@ -1,7 +1,6 @@
 package assigment4.controller.commands;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 import assigment4.model.collagerProject.CollagerProject;
