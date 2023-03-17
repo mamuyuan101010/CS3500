@@ -1,6 +1,8 @@
 package assigment4.controller.commands;
 
 import java.util.List;
+
+import assigment4.model.collagerProject.CollagerProject;
 import assigment4.model.layer.Layer;
 
 /**
@@ -9,10 +11,9 @@ import assigment4.model.layer.Layer;
 public interface ImageCommand {
 
   /**
-   * Applies command given a list of images.
-   * @param layers list of layer for the command to work on.
+   * Applies command given project.
    */
-  public void apply(Project ) throws IllegalStateException;
+  public void apply(CollagerProject c) throws IllegalStateException;
 
   /**
    * Prints helpful information about a command.

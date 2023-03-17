@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import assigment4.model.collagerProject.CollagerProject;
 import assigment4.model.coord.Coordinate;
 import assigment4.model.filter.Filter;
 import assigment4.model.image.ImageModel;
@@ -25,7 +26,7 @@ public class NewProjectCommand extends AbstractCommand{
    * apply the new-project command to the given layers, make an empty white canvas
    */
   @Override
-  public void apply(List<Layer> layers) throws IllegalStateException {
+  public void apply(CollagerProject c) throws IllegalStateException {
     int height = this.getInt();
     int width = this.getInt();
     Pixel pixel = new SimplePixel(255, 255, 255);
@@ -41,6 +42,8 @@ public class NewProjectCommand extends AbstractCommand{
     HashMap<String, ImageWithCoordModel> background = new HashMap();
     background.put("background", imageModelCoord);
     Layer outPutLayer = new SimpleLayer(Filter.Normal, background, "background");
-    layers.add(outPutLayer);
+    c.getLayers().add(outPutLayer);
+    c.setHeight(height);
+    c.setWidth(width);
   }
 }

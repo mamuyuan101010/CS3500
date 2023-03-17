@@ -3,6 +3,7 @@ package assigment4.controller.commands;
 import java.util.List;
 import java.util.Scanner;
 
+import assigment4.model.collagerProject.CollagerProject;
 import assigment4.model.layer.Layer;
 
 public class AddLayerCommand extends AbstractCommand{
@@ -12,7 +13,7 @@ public class AddLayerCommand extends AbstractCommand{
   }
 
   @Override
-  public void apply(List<Layer> layers) throws IllegalStateException {
+  public void apply(CollagerProject c) throws IllegalStateException {
     String layerName = this.getString();
   }
 }

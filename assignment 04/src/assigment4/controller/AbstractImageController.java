@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 import assigment4.controller.commands.ImageCommand;
+import assigment4.model.collagerProject.CollagerProject;
+import assigment4.model.collagerProject.SimpleCollagerProject;
 import assigment4.model.layer.Layer;
 import assigment4.view.ImageView;
 
@@ -16,7 +18,7 @@ public abstract class AbstractImageController implements ImageController {
 
   protected Map<String, Function<Scanner, ImageCommand>> commands;
 
-  protected List<Layer> layers;
+  protected CollagerProject c;
 
   protected final Readable in;
   protected final ImageView out;
@@ -31,7 +33,7 @@ public abstract class AbstractImageController implements ImageController {
       throw new IllegalArgumentException("No parameters of controllers can be null.");
     }
     this.commands = new HashMap<>();
-    this.layers = new ArrayList<Layer>();
+    this.c = new SimpleCollagerProject(new ArrayList<Layer>(), 0, 0);
     this.in = in;
     this.out = out;
   }

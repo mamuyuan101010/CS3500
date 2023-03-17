@@ -97,7 +97,7 @@ public class SimpleImageController extends AbstractImageController {
       }
       if (c != null) {
         try {
-          c.apply(this.layers);
+          c.apply(this.c);
         } catch (IllegalStateException e) {
           this.out.renderMessage("Error: " + e.getMessage() + "\n");
         }
