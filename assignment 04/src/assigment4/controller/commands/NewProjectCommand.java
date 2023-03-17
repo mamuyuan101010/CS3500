@@ -30,20 +30,7 @@ public class NewProjectCommand extends AbstractCommand{
   public void apply(CollagerProject c) throws IllegalStateException {
     int height = this.getInt();
     int width = this.getInt();
-    Pixel pixel = new SimplePixel(255, 255, 255);
-    ImageModel imageModel = new SimpleImageModel(255, height, width,
-            new Pixel[height][width]);
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        imageModel.set(i, j, pixel);
-      }
-    }
-    ImageWithCoordModel imageModelCoord =
-            new SimpleImageWithCoordModel(new Coordinate(0,0), imageModel);
-    List<ImageWithCoordModel> background = new ArrayList<ImageWithCoordModel>();
-    background.add(imageModelCoord);
-    Layer outPutLayer = new SimpleLayer(Filter.Normal, background, "background", height, width);
-    c.getLayers().add(outPutLayer);
+    c.getLayers().add(this.generateEmptyLayer(height, width));
     c.setHeight(height);
     c.setWidth(width);
   }
