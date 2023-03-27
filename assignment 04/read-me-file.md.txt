@@ -1,0 +1,58 @@
+#This is CS3500 assignment git hub repository
+
+Adaptor:
+ViewAdapter interface, for create an overall adapter that could write from java program to text file
+PPMViewAdapter class, write text ppm file from java program
+
+Command: 
+ImageCommand interface, for create an overall command
+AbstractCommand class, for create an asbtract class implement ImageCommand
+AddImageToLayerCommand class for execute add to layer command
+LoadProjectCommand class for execute load project command 
+newProjectCommand class for execute new project command
+saveImageCommand class for execute save image command
+SaveProjectCommand class for execute save project command
+setFilterCommand class for execute setFilter command
+
+Image Controller interface for the overall controller of the command
+Abstract Controller class implements iamgeController interface
+SimpleImageController is the controller that this program use, accept input command and execute the command in the program
+
+ImageMain class is for running the program
+
+Model directory:
+SimpleImageModelBuilder is the builder class for easily building the ImageModel.
+
+Filter directory:
+Filter interface for overall filter
+Abstract filter class implements Filter interface
+BlueFilter class creates the filter that only left blue pixels in the picture. 
+NormalFilter class creates the filter that doing nothing in the picuture.
+
+Image directory:
+ImageModel interface for overall imageModel
+AbstractImageModel class implements ImageModel interface
+SimpleImageModel class for create imageModel
+SimpleLayerModel class for creating LayerModel that has a list of images.
+
+Pixel interface represent overall pixels
+SimplePixel class represent the RGB value pixel and RGBA value pixels.
+
+Copyable interface is only for copy the file.
+
+ImageView interface is for overall imageView
+SimpleImageView class is for ImageView that this program uses.
+
+command that accept:
+
+new-project height-value width-value
+add-layer layer-name
+set-filter layer-name filter-type
+add-image-to-layer layer-name ppm-file x y
+add-layer layer-name
+save-image image-file
+save-project project-file
+quit
+
+citation:
+http://www.zhituad.com/view-10879.html

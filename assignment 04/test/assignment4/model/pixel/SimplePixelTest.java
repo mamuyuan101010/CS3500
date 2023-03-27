@@ -2,8 +2,8 @@ package assignment4.model.pixel;
 import org.junit.Before;
 import org.junit.Test;
 
-import assigment4.model.pixel.Pixel;
-import assigment4.model.pixel.SimplePixel;
+import assignment4.model.pixel.Pixel;
+import assignment4.model.pixel.SimplePixel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -15,11 +15,18 @@ public class SimplePixelTest {
 
   private Pixel pixel;
 
+  /**
+   * initialize the value.
+   * @throws Exception
+   */
   @Before
   public void setUp() throws Exception {
     pixel = new SimplePixel(12, 13, 14, 15);
   }
 
+  /**
+   * test for pixelExceptions.
+   */
   @Test
   public void testPixelException() {
     try {
@@ -45,6 +52,9 @@ public class SimplePixelTest {
     }
   }
 
+  /**
+   * test for getValue method.
+   */
   @Test
   public void testGetValue() {
     assertEquals(12, pixel.getR());
@@ -54,6 +64,9 @@ public class SimplePixelTest {
 
   }
 
+  /**
+   * test for copy method.
+   */
   @Test
   public void testCopy() {
     Pixel pixel1 = new SimplePixel(12, 13, 14, 15);
@@ -62,13 +75,20 @@ public class SimplePixelTest {
     assertNotEquals(pixel2, pixel.copy());
   }
 
+
+  /**
+   * test for toString method.
+   */
   @Test
   public void testToString() {
     assertEquals("12 13 14 15", pixel.toString());
   }
 
+  /**
+   * test for convert method.
+   */
   @Test
   public void testConvert() {
-    assertEquals(new SimplePixel(0, 0, 0), pixel.convertTo3Component());
+    assertEquals(new SimplePixel(1, 1, 1), pixel.convertTo3Component());
   }
 }
