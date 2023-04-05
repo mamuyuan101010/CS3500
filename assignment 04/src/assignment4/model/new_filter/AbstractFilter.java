@@ -7,6 +7,10 @@ import assignment4.model.pixel.Pixel;
 import assignment4.model.pixel.SimplePixel;
 
 public abstract class AbstractFilter implements New_filter{
+
+  /**
+   * convert the image in RGB value to HSL.
+   */
   void HSLConvert(ImageModel img) {
     for (int i = 0; i < img.getHeight(); i ++) {
       for (int j = 0; j < img.getWidth(); j ++) {
@@ -16,6 +20,9 @@ public abstract class AbstractFilter implements New_filter{
     }
   }
 
+  /**
+   * convert the image in HSL value to RGB.
+   */
   void RGBConvert(ImageModel img) {
     for (int i = 0; i < img.getHeight(); i ++) {
       for (int j = 0; j < img.getWidth(); j++) {
@@ -25,6 +32,9 @@ public abstract class AbstractFilter implements New_filter{
     }
   }
 
+  /**
+   * create a new empty white image given the height and width value.
+   */
   ImageModel emptyImage(int height, int width) {
     Pixel[][] outputPixel = new Pixel[height][width];
     for (int i = 0; i < height; i ++) {
@@ -37,6 +47,10 @@ public abstract class AbstractFilter implements New_filter{
     return output;
   }
 
+  /**
+   * return whether the size of the two given image is same,
+   * both width and height.
+   */
   boolean compareImageSize(ImageModel currentLayer, ImageModel layerBelow) {
     return currentLayer.getHeight() == layerBelow.getHeight()
             && currentLayer.getWidth() == layerBelow.getWidth();

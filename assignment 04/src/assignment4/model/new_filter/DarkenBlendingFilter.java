@@ -5,11 +5,18 @@ import assignment4.model.pixel.HSLPixel;
 import assignment4.model.pixel.Pixel;
 
 public class DarkenBlendingFilter extends AbstractFilter{
+
+  /**
+   * return the name of the filter.
+   */
   @Override
   public String getName() {
     return "darken-blending-filter";
   }
 
+  /**
+   * filter the two image.
+   */
   @Override
   public ImageModel filtering(ImageModel currentLayer, ImageModel layerBelow) {
     if (compareImageSize(currentLayer, layerBelow)) {

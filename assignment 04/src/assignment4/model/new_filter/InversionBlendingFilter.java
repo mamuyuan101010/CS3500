@@ -6,11 +6,19 @@ import assignment4.model.pixel.Pixel;
 import assignment4.model.pixel.SimplePixel;
 
 public class InversionBlendingFilter extends AbstractFilter {
+
+  /**
+   * return the name of the filter.
+   */
   @Override
   public String getName() {
     return "inversion-blending-filter";
   }
 
+
+  /**
+   * filter the two layer.
+   */
   @Override
   public ImageModel filtering(ImageModel currentLayer, ImageModel layerBelow) {
     if (compareImageSize(currentLayer, layerBelow)) {

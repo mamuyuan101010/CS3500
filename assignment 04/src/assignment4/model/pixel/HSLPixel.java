@@ -25,34 +25,55 @@ public class HSLPixel implements Pixel {
     return H >= 0 && H <= 360 && S >= 0 && S <= 1 && L >= 0 && L <= 1;
   }
 
+  /**
+   * throw an exception since the value should not return R.
+   */
   @Override
   public int getR() {
     throw new IllegalStateException("not a RGB value");
   }
 
+  /**
+   * throw an exception since the value should not return G.
+   */
   @Override
   public int getG() {
     throw new IllegalStateException("not a RGB value");
   }
 
+  /**
+   * throw an exception since the value should not return B.
+   */
   @Override
   public int getB() {
     throw new IllegalStateException("not a RGB value");
   }
 
+  /**
+   * throw an exception since the value should not return A.
+   */
   @Override
   public int getA() {
     throw new IllegalStateException("not a RGB value");
   }
 
+  /**
+   * return H.
+   */
   public double getH() {
     return this.H;
   }
 
+  /**
+   * return S.
+   */
   public double getS() {
     return this.S;
   }
 
+  /**
+   * return L.
+   */
   public double getL() {
     return this.L;
   }
@@ -69,6 +90,9 @@ public class HSLPixel implements Pixel {
     return new HSLPixel(newH, newS, newL);
   }
 
+  /**
+   * throw exception because it is not an RGB value.
+   */
   @Override
   public Pixel convertTo3Component() {
     throw new IllegalStateException("not a RGB value");
