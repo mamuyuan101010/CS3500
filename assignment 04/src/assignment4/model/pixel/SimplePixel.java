@@ -52,7 +52,7 @@ public class SimplePixel implements Pixel {
   /**
    * return the R value of the simplePixel.
    */
-  @Override
+
   public int getR() {
     return this.r;
   }
@@ -60,7 +60,7 @@ public class SimplePixel implements Pixel {
   /**
    * return the G value of the simplePixel.
    */
-  @Override
+
   public int getG() {
     return this.g;
   }
@@ -68,7 +68,7 @@ public class SimplePixel implements Pixel {
   /**
    * return the B value of the simplePixel.
    */
-  @Override
+
   public int getB() {
     return this.b;
   }
@@ -77,7 +77,7 @@ public class SimplePixel implements Pixel {
    * return the A value of the simplePixel.
    * @return
    */
-  @Override
+
   public int getA() {
     return this.a;
   }
@@ -96,7 +96,7 @@ public class SimplePixel implements Pixel {
    * convert the current simplePixel from 4 component to a 3 component pixel,
    * from RGBA to RGB.
    */
-  @Override
+
   public Pixel convertTo3Component() {
     int r = (int) Math.round(this.r * this.a / 255.0);
     int g = (int) Math.round(this.g * this.a / 255.0);
@@ -142,6 +142,59 @@ public class SimplePixel implements Pixel {
   @Override
   public int hashCode() {
     return Objects.hash(getR(), getG(), getB(), getA());
+  }
+
+  /**
+   * convert RGB to HSL
+   */
+  public Pixel convertToHSL() {
+    Pixel newPixel;
+    if (this.a != 255) {
+      newPixel = this.convertTo3Component();
+    }
+    else {
+      newPixel = this.copy();
+    }
+    SimplePixel newSimplePixel = (SimplePixel) newPixel;
+    double newR = (double) newSimplePixel.getR();
+    double newG = (double) newSimplePixel.getG();
+    double newB = (double) newSimplePixel.getB();
+    return convertRGBtoHSL(newR, newG, newB);
+  }
+
+  /**
+   * return a new HSL pixel given the rgb value in double.
+   */
+  public Pixel convertRGBtoHSL(double r, double g, double b) {
+    double componentMax = Math.max(r, Math.max(g, b));
+    double componentMin = Math.min(r, Math.min(g, b));
+    double delta = componentMax - componentMin;
+
+    double lightness = (componentMax + componentMin)/2;
+    double hue, saturation;
+    if(delta == 0) {
+      hue = 0;
+      saturation = 0;
+    } else {
+      saturation = delta / (1 - Math.abs(2*lightness - 1));
+      hue = 0;
+      if(componentMax == r) {
+        hue = (g - b)/delta;
+        while(hue < 0) {
+          hue += 6; //hue must be positive to find the appropriate modulus
+        }
+        hue = hue % 6;
+      } else if(componentMax == g) {
+        hue = (b - r)/delta;
+        hue += 2;
+      } else if(componentMax == b){
+        hue = (r - g)/delta;
+        hue += 4;
+      }
+
+      hue = hue * 60;
+    }
+    return new HSLPixel(hue, saturation, lightness);
   }
 }
 
