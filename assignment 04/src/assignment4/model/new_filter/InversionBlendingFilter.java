@@ -5,7 +5,7 @@ import assignment4.model.image.SimpleImageModel;
 import assignment4.model.pixel.Pixel;
 import assignment4.model.pixel.SimplePixel;
 
-public class InversionBlendingFilter implements New_filter{
+public class InversionBlendingFilter extends AbstractFilter {
   @Override
   public String getName() {
     return "inversion-blending-filter";
@@ -13,8 +13,7 @@ public class InversionBlendingFilter implements New_filter{
 
   @Override
   public ImageModel filtering(ImageModel currentLayer, ImageModel layerBelow) {
-    if (currentLayer.getHeight() == layerBelow.getHeight()
-    && currentLayer.getWidth() == layerBelow.getWidth()) {
+    if (compareImageSize(currentLayer, layerBelow)) {
       Pixel[][] outputPixel = new Pixel[currentLayer.getHeight()][currentLayer.getWidth()];
       for (int i = 0; i < currentLayer.getHeight(); i ++) {
         for (int j = 0; j < currentLayer.getWidth(); j ++) {
